@@ -6,6 +6,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Builder
 @Table(name = "product") //클래스 이름과 테이블의 이름이 다를 때 어노테이션으로 지정해주어야 함
 //여기서부터 롬복
 /**
@@ -15,7 +16,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@EqualsAndHashCode
+@ToString(exclude = "name")
 public class Product {
     @Id //primary key임을 명시
     @GeneratedValue(strategy = GenerationType.IDENTITY) // @Id와 함께 사용되는 어노테이션 해당 필드에 어떤 값을 어떤 방식으로 자동으로 생성할지
